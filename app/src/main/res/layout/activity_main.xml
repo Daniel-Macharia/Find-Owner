@@ -10,52 +10,22 @@
     android:background="@color/cream"
     >
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/gray"
+        app:tabSelectedTextColor="@color/blue"
+        app:tabIndicatorColor="@color/cream"
+        android:background="@color/cream"
+        />
 
-        >
-        <TextView
-            android:id="@+id/textRead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="text"
-            android:textSize="24sp"
-            />
-
-        <TextView
-            android:id="@+id/encodedFormat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="format"
-            android:textSize="18sp"
-            />
-    </LinearLayout>
-
-    <LinearLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
-        android:gravity="center"
-        android:orientation="vertical"
-
-        >
-
-        <Button
-            android:id="@+id/scanQR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:textSize="24sp"
-            android:text="scan QR"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            />
-
-    </LinearLayout>
+        />
 
 
 </LinearLayout>
