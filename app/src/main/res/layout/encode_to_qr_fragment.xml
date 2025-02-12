@@ -7,10 +7,15 @@
 
     <LinearLayout
         android:id="@+id/form_wrapper"
-        android:layout_width="400dp"
+        android:layout_width="0dp"
         android:layout_height="640dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:paddingStart="2dp"
+        android:paddingEnd="4dp"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -18,7 +23,7 @@
             android:text="Generate QR"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="40sp"
+            android:textSize="32sp"
             />
 
         <LinearLayout
@@ -41,7 +46,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Reg. No:"
                     />
@@ -56,7 +62,7 @@
                 >
 
                 <EditText
-                    android:id="@+id/ownerRegNum"
+                    android:id="@+id/regNum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
@@ -90,7 +96,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Name:"
                     />
@@ -133,13 +140,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Student photo:"
                     />
@@ -185,7 +193,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Model:"
                     />
@@ -234,7 +243,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Serial No:"
                     />
@@ -283,7 +293,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Colour:"
                     />
@@ -326,13 +337,14 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_weight="3"
+                android:layout_weight="1"
                 >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:gravity="end"
+                    android:textSize="24sp"
                     android:textColor="@color/black"
                     android:text="Laptop image:"
                     />
@@ -382,12 +394,14 @@
                 android:gravity="end|center"
                 android:orientation="horizontal"
                 android:layout_weight="1"
+                android:paddingEnd="8dp"
                 >
 
                 <Button
+                    android:id="@+id/saveData"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="32sp"
+                    android:textSize="24sp"
                     android:textColor="@color/blue"
                     android:text="save"
                     />

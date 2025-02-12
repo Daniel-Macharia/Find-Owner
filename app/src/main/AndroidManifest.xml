@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FindLaptopOwner"
         tools:targetApi="31">
+
+        <activity android:name=".ShowQRCodeActivity"></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

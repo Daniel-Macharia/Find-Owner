@@ -21,6 +21,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class DecodeQR extends Fragment {
 
     private TextView textRead, encodedFormat;
+    private MainActivity mainActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,8 @@ public class DecodeQR extends Fragment {
         encodedFormat = view.findViewById( R.id.encodedFormat );
         Button scanQR = view.findViewById( R.id.scanQR );
 
+        mainActivity = (MainActivity) getActivity();
+
         scanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +47,7 @@ public class DecodeQR extends Fragment {
                 intentIntegrator.setOrientationLocked(false);
                 intentIntegrator.setDesiredBarcodeFormats(String.valueOf(BarcodeFormat.QR_CODE));
                 intentIntegrator.initiateScan();
+                mainActivity.SCAN_QR = true;
             }
         });
 

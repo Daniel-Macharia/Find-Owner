@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "861890370921",
+    "firebase_url": "https://soko-d6de9-default-rtdb.firebaseio.com",
+    "project_id": "soko-d6de9",
+    "storage_bucket": "soko-d6de9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861890370921:android:d24f6493e7f7d16ce1b1f8",
+        "android_client_info": {
+          "package_name": "com.example.findlaptopowner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfu1iikG9MqCiq4nh6U91l8iPyieCUjpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861890370921:android:e3b093f5ce346a41e1b1f8",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfu1iikG9MqCiq4nh6U91l8iPyieCUjpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

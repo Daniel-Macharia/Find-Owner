@@ -1,5 +1,7 @@
 plugins {
     id("com.android.application")
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -44,4 +46,6 @@ dependencies {
 
     //add dependency for the zxing library
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
+    implementation("com.google.zxing:core:latest_version")
+
 }
