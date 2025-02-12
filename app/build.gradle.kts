@@ -46,6 +46,6 @@ dependencies {
 
     //add dependency for the zxing library
     implementation("com.journeyapps:zxing-android-embedded:4.1.0")
-    implementation("com.google.zxing:core:latest_version")
+    implementation("com.google.zxing:core:3.5.1")
 
 }

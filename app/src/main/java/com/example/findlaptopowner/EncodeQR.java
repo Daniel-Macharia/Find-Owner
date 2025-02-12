@@ -208,7 +208,7 @@ public class EncodeQR extends Fragment {
                             String serialNum, String model, String color, String laptopPhotoURI )
     {
         try{
-            /*FirebaseApp.initializeApp(getContext().getApplicationContext());
+            FirebaseApp.initializeApp(getContext().getApplicationContext());
             //add student and laptop photos
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference("owner");
@@ -236,7 +236,7 @@ public class EncodeQR extends Fragment {
                                             detailsRef.child(parsedRegNo).setValue(owner)
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                         @Override
-                                                        public void onComplete(@NonNull Task<Void> task) { */
+                                                        public void onComplete(@NonNull Task<Void> task) {
                                                             Toast.makeText(mainActivity, "Details stored successfully", Toast.LENGTH_SHORT).show();
                                                             Intent intent = new Intent(  getContext().getApplicationContext(), ShowQRCodeActivity.class);
                                                             intent.putExtra("regNo", regNo);
@@ -245,12 +245,12 @@ public class EncodeQR extends Fragment {
                                                             intent.putExtra("model", model);
                                                             intent.putExtra("color", color);
                                                             startActivity(intent);
-                                                      /*  }
+                                                        }
                                                     });
                                         }
                                     });
                         }
-                    }); */
+                    });
 
         }catch( Exception e )
         {

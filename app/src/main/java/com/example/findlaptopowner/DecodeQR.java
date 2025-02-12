@@ -33,8 +33,8 @@ public class DecodeQR extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.decode_qr_fragment, container, false);
-        textRead = view.findViewById( R.id.textRead );
-        encodedFormat = view.findViewById( R.id.encodedFormat );
+        //textRead = view.findViewById( R.id.textRead );
+        //encodedFormat = view.findViewById( R.id.encodedFormat );
         Button scanQR = view.findViewById( R.id.scanQR );
 
         mainActivity = (MainActivity) getActivity();

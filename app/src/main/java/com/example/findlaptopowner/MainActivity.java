@@ -3,6 +3,7 @@ package com.example.findlaptopowner;
 import android.app.Activity;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -11,6 +12,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +22,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -179,13 +186,32 @@ public class MainActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        TextView textRead, encodedFormat;
+                        try {
+                            TextView regNum, name, lapSerialNumber, lapModel, lapColor;
 
-                        textRead = findViewById( R.id.textRead );
-                        encodedFormat = findViewById( R.id.encodedFormat);
-                        Toast.makeText( getApplicationContext(), "Data: " + intentResult.getContents(), Toast.LENGTH_SHORT).show();
-                        textRead.setText( intentResult.getContents() );
-                        encodedFormat.setText( intentResult.getFormatName() );
+                            regNum = findViewById( R.id.regNum );
+                            name = findViewById( R.id.name);
+                            lapSerialNumber = findViewById( R.id.lapSerialNumber);
+                            lapModel = findViewById( R.id.lapModel);
+                            lapColor = findViewById( R.id.lapColor);
+
+
+                            String resultString = intentResult.getContents();
+                            resultString = resultString.replaceAll("[{}]", "");
+                            String []brokenDownResult = resultString.split("[,:]");
+
+                            regNum.setText( brokenDownResult[1] );
+                            name.setText( brokenDownResult[3] );
+                            lapSerialNumber.setText( brokenDownResult[5] );
+                            lapModel.setText( brokenDownResult[7] );
+                            lapColor.setText( brokenDownResult[9] );
+
+                            getImages( brokenDownResult[1].replaceAll("[/-]", ""));
+                        }catch (Exception e)
+                        {
+                            Toast.makeText(getApplicationContext(), "Error processing QR: " + e, Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 }
                 else
@@ -204,6 +230,45 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Null results", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private void getImages(String regNum)
+    {
+        Looper looper = Looper.getMainLooper();
+        Handler handler = new Handler(looper);
+
+        Toast.makeText(getApplicationContext(), "getting images for reg. Num: " + regNum, Toast.LENGTH_SHORT).show();
+        try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    FirebaseStorage storage = FirebaseStorage.getInstance();
+                    StorageReference ref = storage.getReference("owner");
+
+                    ref.child("LaptopPhoto").child(regNum)
+                            .getDownloadUrl()
+                            .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    //download the laptop image
+
+                                }
+                            });
+
+                    ref.child("StudentPhoto").child("regNum")
+                            .getDownloadUrl()
+                            .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    //download the student Photo
+                                }
+                            });
+                }
+            }).start();
+        }catch( Exception e )
+        {
+            Toast.makeText(getApplicationContext(), "Error fetching images: " + e, Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

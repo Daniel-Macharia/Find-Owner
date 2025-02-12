@@ -7,35 +7,239 @@
 
     >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:text="Student details"
+        android:gravity="center"
+        android:textSize="32sp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="7"
         android:gravity="center"
         android:orientation="vertical"
 
         >
-        <TextView
-            android:id="@+id/textRead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="text"
-            android:textSize="24sp"
-            />
 
-        <TextView
-            android:id="@+id/encodedFormat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="format"
-            android:textSize="18sp"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Student Reg. Number:"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/regNum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:text="registration number"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Student Name:"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:text="student name"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Student Photo:"
+                android:textSize="24sp"
+                />
+
+            <ImageView
+                android:id="@+id/studPhoto"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:src="@drawable/default_student_image"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Serial Number:"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/lapSerialNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:text="laptop serial number"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Laptop Model:"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/lapModel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:text="laptop model"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Laptop Color"
+                android:textSize="24sp"
+                />
+
+            <TextView
+                android:id="@+id/lapColor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:text="laptop color"
+                android:textSize="18sp"
+                android:textColor="@color/blue"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            android:gravity="center"
+
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end|center"
+                android:padding="4dp"
+                android:text="Laptop Photo"
+                android:textSize="24sp"
+                />
+
+            <ImageView
+                android:id="@+id/lapPhoto"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:padding="4dp"
+                android:src="@drawable/default_laptop_image"
+                />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical"
 
@@ -45,11 +249,11 @@
             android:id="@+id/scanQR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
+            android:padding="16dp"
             android:textSize="24sp"
             android:text="scan QR"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"
             />
 
     </LinearLayout>

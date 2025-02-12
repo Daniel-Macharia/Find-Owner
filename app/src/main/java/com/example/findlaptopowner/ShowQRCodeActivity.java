@@ -3,6 +3,7 @@ package com.example.findlaptopowner;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -15,12 +16,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -94,6 +97,9 @@ public class ShowQRCodeActivity extends AppCompatActivity {
         try {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     44);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    44);
+
 
             File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 
@@ -102,6 +108,11 @@ public class ShowQRCodeActivity extends AppCompatActivity {
             if( ! file.exists() )
             {
                 file.createNewFile();
+
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(), "A file with the name (" + file.getAbsolutePath() + ") exists!", Toast.LENGTH_SHORT).show();
             }
 
             //Path path = Paths.get(file.toURI());
@@ -111,6 +122,10 @@ public class ShowQRCodeActivity extends AppCompatActivity {
             {
                 Toast.makeText(getApplicationContext(), "Writing to: " + file.getAbsolutePath().toString(), Toast.LENGTH_SHORT).show();
                 qrImage.setImageBitmap(bm);
+                FileOutputStream fout = new FileOutputStream(file.getAbsolutePath());
+                fout.write( out.toByteArray() );
+                fout.flush();
+                fout.close();
             }
 
         } catch (Exception e) {
@@ -123,8 +138,19 @@ public class ShowQRCodeActivity extends AppCompatActivity {
 
         QRCodeWriter writer = new QRCodeWriter();
 
-        BitMatrix matrix = writer.encode(data, BarcodeFormat.QR_CODE, 600, 600);
+        BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 600, 600);
 
-        return Bitmap.createBitmap(matrix.getWidth(), matrix.getHeight(), Bitmap.Config.ARGB_8888);
+
+        Bitmap bm = Bitmap.createBitmap(matrix.getWidth(), matrix.getHeight(), Bitmap.Config.RGB_565);
+        int w = matrix.getWidth();
+        int h = matrix.getHeight();
+
+        for (int i = 0; i < w; i++) {
+            for (int j = 0; j < h; j++) {
+                bm.setPixel(i, j, matrix.get(i, j) ? Color.BLACK: Color.WHITE);
+            }
+        }
+
+        return bm;
     }
 }
