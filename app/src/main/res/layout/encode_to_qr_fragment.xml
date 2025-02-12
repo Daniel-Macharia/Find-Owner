@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Reg. No:"
                     />
@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Name:"
                     />
@@ -147,9 +147,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:text="Student photo:"
+                    android:text="Student Photo:"
                     />
 
             </LinearLayout>
@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Model:"
                     />
@@ -244,7 +244,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Serial No:"
                     />
@@ -294,7 +294,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:text="Colour:"
                     />
@@ -344,9 +344,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:textSize="24sp"
+                    android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:text="Laptop image:"
+                    android:text="Laptop Photo:"
                     />
 
             </LinearLayout>
@@ -402,8 +402,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="24sp"
-                    android:textColor="@color/blue"
+                    android:textColor="@color/white"
                     android:text="save"
+                    android:backgroundTint="@color/blue"
                     />
 
             </LinearLayout>
