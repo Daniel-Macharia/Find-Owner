@@ -10,6 +10,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
@@ -31,6 +36,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.io.InputStream;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean STUDENT_IMAGE = false, LAPTOP_IMAGE = false, SCAN_QR = false;
 
     public String studentPhotoURI, laptopPhotoURI;
+    private ImageView studentPhoto, laptopPhoto;
 
     public ActivityResultLauncher<Intent> launcher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -236,6 +245,8 @@ public class MainActivity extends AppCompatActivity {
     {
         Looper looper = Looper.getMainLooper();
         Handler handler = new Handler(looper);
+        studentPhoto = findViewById( R.id.studPhoto );
+        laptopPhoto = findViewById( R.id.lapPhoto );
 
         Toast.makeText(getApplicationContext(), "getting images for reg. Num: " + regNum, Toast.LENGTH_SHORT).show();
         try {
@@ -246,21 +257,34 @@ public class MainActivity extends AppCompatActivity {
                     StorageReference ref = storage.getReference("owner");
 
                     ref.child("LaptopPhoto").child(regNum)
-                            .getDownloadUrl()
-                            .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            .getBytes(Long.MAX_VALUE)
+                            .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    //download the laptop image
-
+                                public void onSuccess(byte[] bytes) {
+                                    Drawable d = new BitmapDrawable(getResources(),
+                                            BitmapFactory.decodeByteArray( bytes, 0, bytes.length ) );
+                                    laptopPhoto.setImageDrawable( d );
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Failed to load laptop photo: " + e, Toast.LENGTH_SHORT).show();
                                 }
                             });
 
-                    ref.child("StudentPhoto").child("regNum")
-                            .getDownloadUrl()
-                            .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    ref.child("StudentPhoto").child(regNum)
+                            .getBytes(Long.MAX_VALUE)
+                            .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                                 @Override
-                                public void onComplete(@NonNull Task<Uri> task) {
-                                    //download the student Photo
+                                public void onSuccess(byte[] bytes) {
+                                    Drawable d = new BitmapDrawable(getResources(),
+                                            BitmapFactory.decodeByteArray( bytes, 0, bytes.length ) );
+                                    studentPhoto.setImageDrawable( d );
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Failed to load student photo: " + e, Toast.LENGTH_SHORT).show();
                                 }
                             });
                 }
